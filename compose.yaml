@@ -1,0 +1,11 @@
+services:
+  protondb-bot:
+    build: .
+    container_name: protondb-discord-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      CACHE_SECONDS: ${CACHE_SECONDS:-900}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    init: true
