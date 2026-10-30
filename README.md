@@ -32,9 +32,7 @@ Game-name commands support autocomplete. Some data may be unavailable if Steam o
 
 ## Invite or self-host
 
-The bot was created for the Playden community. To use a hosted instance in another Discord server, an invite link must be provided by the bot owner; a public invite is not currently listed here.
-
-You can also host your own instance using Docker.
+The bot was created for the Playden community, but you can also host your own instance using Docker.
 
 ### Requirements
 
@@ -64,7 +62,20 @@ You can also host your own instance using Docker.
 
    `DISCORD_GUILD_ID` is optional. Set it to a test server ID for faster slash-command registration during development; leave it empty for global commands. `STEAM_COUNTRY` defaults to `gb` and `STEAM_LANGUAGE` defaults to `english`. You can also set `HTTP_TIMEOUT_SECONDS` (default `12`).
 
-3. In the [Discord Developer Portal](https://discord.com/developers/applications), enable the bot for your application and invite it to your server with the `bot` and `applications.commands` scopes. The bot uses slash commands and does not need privileged message-content intent.
+3. In the [Discord Developer Portal](https://discord.com/developers/applications), select your application, enable the bot, and generate an invite link under **Installation** with the following settings:
+
+   **Scopes:**
+   - `bot`
+   - `applications.commands`
+
+   **Bot Permissions:**
+   - View Channels
+   - Send Messages
+   - Embed Links
+
+   The bot uses slash commands and interactive buttons, so it does **not** require Administrator permissions or privileged intents such as Message Content.
+
+   Once configured, use the generated invite link to add the bot to your Discord server.
 
 4. Start the bot:
 
@@ -85,8 +96,6 @@ git pull
 docker compose up -d --build
 ```
 
-Keep your `.env` private and never commit your Discord token. If you replace project files manually, **preserve your existing `.env`**.
-
 ### Troubleshooting
 
 - **Bot offline:** Check the container logs and verify `DISCORD_TOKEN`.
@@ -105,7 +114,7 @@ Issues and pull requests are welcome. When reporting a bug, include the command,
 - [Steam](https://store.steampowered.com/) — game information, reviews, pricing and news.
 - [discord.py](https://discordpy.readthedocs.io/) — Discord bot framework.
 
-This is an independent community project and is not officially affiliated with Valve, Steam, ProtonDB or the Playden project.
+This is an independent community project and is not officially affiliated with Valve, Steam or ProtonDB.
 
 ## License
 
